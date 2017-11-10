@@ -1,0 +1,184 @@
+<html lang="en" ng-app="ui.bootstrap.demo">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .relative {
+            position: relative;
+        }
+
+        .inline {
+            display: inline-block;
+        }
+
+        .filter-button {
+            border: none;
+        }
+
+        .margin-vertical {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        #advanced {
+            opacity: .7;
+            font-size: 11px;
+            margin-left: 70px;
+            top: 5px;
+            position: relative;
+        }
+
+        .advanced-button {
+            border-bottom: 1px dotted rgba(255, 255, 255, 0.6);
+        }
+
+        .left-inner-addon i {
+            position: absolute;
+            padding: 6px 12px;
+            pointer-events: none;
+        }
+
+        .dropdown-search {
+            background: inherit;
+            margin-top: 2px;
+            z-index: 999;
+            top: 100%;
+            min-width: 202px;
+            border-bottom: none;
+            padding: 4px 5px;
+        }
+
+        .left-inner-addon input {
+            padding-left: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 0px;
+        }
+
+        .first-did a {
+            margin-top: 5px;
+            background-color: black;
+            color: white!important;
+            margin-bottom: -5px;
+        }
+
+        .first-did a:hover {
+            background-color: black!important;
+            color: white!important;
+        }
+
+        .searchable {
+            border-top-width: 0;
+            padding: 0;
+            overflow: auto;
+            width: 202px;
+            max-height: 186px;
+            margin-top: -9px;
+            border-radius: 0 0 3px 3px;
+            margin-left: 0px;
+        }
+
+        .search-control {
+            margin-left: -5px;
+            width: 202px;
+        }
+    </style>
+    <title>Rakam UI</title>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <h4>Funnel Steps</h4>
+        <!-- first did -->
+        <div class="margin-vertical">
+            <span>
+                <a class="fa fa-remove" href="#"></a> first did</span>
+            <div class="btn-group" uib-dropdown is-open="status.isopen">
+                <button id="single-button" type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled">
+                    transaction
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                    <li role="menuitem">
+                        <div class="left-inner-addon dropdown-search form-group" ng-click="$event.preventDefault();$event.stopPropogation();">
+                            <i class="fa fa-search"></i>
+                            <input type="text" class="form-control" ng-model="searchTerm" placeholder="search attributes">
+                        </div>
+                    </li>
+                    <li class="first-did">
+                        <a href="#">transaction</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="relative inline" uib-dropdown>
+                <button class="btn btn-sm btn-default filter-button" type="button" uib-dropdown-toggle id="filterButton">
+                    add filter
+                    <span class="fa fa-plus-circle button-fa pointer"></span>
+                </button>
+                <ul class="dropdown-menu scrollable-menu" uib-dropdown-menu role="menu" aria-labelledby="filterButton">
+                    <li role="menuitem">
+                        <div class="left-inner-addon dropdown-search form-group" ng-click="$event.preventDefault();$event.stopPropogation();">
+                            <i class="fa fa-search"></i>
+                            <input type="text" class="form-control" ng-model="searchTerm" placeholder="search attributes">
+                        </div>
+                    </li>
+                    <li class="divider"></li>
+                    <li role="menuitem" class="scrollbox searchable">
+                        <a href="#">__ip</a>
+                        <a href="#">_city</a>
+                        <a href="#">_connection_type</a>
+                        <a href="#">_country_code</a>
+                        <a href="#">_device_family</a>
+                        <a href="#">_device_id</a>
+                        <a href="#">_isp</a>
+                        <a href="#">_latitude</a>
+                        <a href="#">_longitude</a>
+                        <a href="#">_os</a>
+                        <a href="#">_os_version</a>
+                        <a href="#">_referrer_domain</a>
+                        <a href="#">_referrer_medium</a>
+                        <a href="#">_referrer_path</a>
+                        <a href="#">_referrer_source</a>
+                        <a href="#">_referrer_term</a>
+                        <a href="#">_region</a>
+                        <a href="#">_session_id</a>
+                        <a href="#">_time</a>
+                        <a href="#">_timezone</a>
+                        <a href="#">_url</a>
+                        <a href="#">_user</a>
+                        <a href="#">_user_agent_family</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- and did -->
+        <div class="margin-vertical">
+            <span>
+                <a class="fa fa-remove" style="visibility: hidden"></a> and did</span>
+            <div class="btn-group dropdown">
+                <button class="btn btn-default dropdown-toggle" aria-expanded="false">select collection
+                    <span class="caret"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- advanced -->
+        <div id="advanced">
+            <a class="advanced-button" href="#">advanced</a>
+        </div>
+    </div>
+
+    <script src="ui-bootstrap-tpls-2.5.0.min.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
