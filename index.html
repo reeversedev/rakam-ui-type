@@ -88,6 +88,10 @@
             margin-left: -5px;
             width: 202px;
         }
+
+        #advanced-options input {
+            margin-left: 65px;
+        }
     </style>
     <title>Rakam UI</title>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
@@ -173,7 +177,22 @@
 
         <!-- advanced -->
         <div id="advanced">
-            <a class="advanced-button" href="#">advanced</a>
+            <a class="advanced-button" ng-click="showme=true" ng-hide="showme">advanced</a>
+        </div>
+        <div id="advanced-options">
+            <div ng-show="showme">
+                <input type="checkbox">custom actor fields
+                <br>
+            </div>
+            <div ng-show="showme">
+                <input type="checkbox">force strict ordering
+                <br>
+            </div>
+            <div ng-show="showme">
+                <input type="checkbox">approximate result
+                <br>
+            </div>
+
         </div>
     </div>
 
