@@ -89,7 +89,47 @@
             width: 202px;
         }
 
+        .advanced-button {
+            cursor: pointer;
+        }
+
         #advanced-options input {
+            margin-left: 65px;
+        }
+
+        #advanced-close-button {
+            margin-left: 200px;
+            cursor: pointer;
+        }
+
+        .btn {
+            background: 0 0;
+            box-shadow: none;
+            border: 1px solid #0082d5;
+            border-radius: 3px;
+            font-family: Roboto-Medium, Roboto, sans-serif;
+            font-size: 13px;
+        }
+
+        .btn.btn-success {
+            border-color: #04be5b;
+            color: #04be5b;
+        }
+
+        .btn.btn.btn-success:hover {
+            color: whitesmoke;
+        }
+
+        .btn.btn-primary {
+            color: #0082d5;
+            border: 1px solid #0082d5;
+        }
+
+        #submit-section {
+            margin-top: 14px;
+            margin-left: 30px;
+        }
+        #select-collection {
             margin-left: 65px;
         }
     </style>
@@ -165,14 +205,25 @@
             </div>
         </div>
         <!-- and did -->
-        <div class="margin-vertical">
-            <span>
-                <a class="fa fa-remove" style="visibility: hidden"></a> and did</span>
-            <div class="btn-group dropdown">
-                <button class="btn btn-default dropdown-toggle" aria-expanded="false">select collection
-                    <span class="caret"></span>
-                </button>
-            </div>
+
+
+        <!-- Single button using append-to-body -->
+        <div class="btn-group" uib-dropdown dropdown-append-to-body id="select-collection">
+            <button id="btn-append-to-body" type="button" class="btn btn-default" uib-dropdown-toggle>
+                select collection
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                <li role="menuitem">
+                    <div class="left-inner-addon dropdown-search form-group" ng-click="$event.preventDefault();$event.stopPropogation();">
+                        <i class="fa fa-search"></i>
+                        <input type="text" class="form-control" ng-model="searchTerm" placeholder="search attributes">
+                    </div>
+                </li>
+                <li class="first-did">
+                    <a href="#">transaction</a>
+                </li>
+            </ul>
         </div>
 
         <!-- advanced -->
@@ -180,6 +231,9 @@
             <a class="advanced-button" ng-click="showme=true" ng-hide="showme">advanced</a>
         </div>
         <div id="advanced-options">
+            <div ng-show="showme">
+                <a class="fa fa-remove" id="advanced-close-button" ng-click="showme=false"></a>
+            </div>
             <div ng-show="showme">
                 <input type="checkbox">custom actor fields
                 <br>
@@ -192,10 +246,18 @@
                 <input type="checkbox">approximate result
                 <br>
             </div>
-
         </div>
     </div>
-
+    <div id="submit-section">
+        <button type="button" class="btn btn-success" id="query-button">
+            <i class="fa fa-question"></i>
+            Query
+        </button>
+        <button type="button" class="btn btn-primary">
+            <i class="fa fa-save"></i>
+            Save as new
+        </button>
+    </div>
     <script src="ui-bootstrap-tpls-2.5.0.min.js"></script>
     <script src="index.js"></script>
 </body>
