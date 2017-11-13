@@ -115,6 +115,9 @@
     border: 1px solid #0082d5;
 }
 
+.btn.btn.btn-primary:hover {
+  color: whitesmoke;
+}
 #submit-section {
     margin-top: 14px;
     margin-left: 30px;
